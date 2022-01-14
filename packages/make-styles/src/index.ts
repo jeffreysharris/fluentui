@@ -33,6 +33,7 @@ export const shorthands = {
 };
 
 export { createDOMRenderer } from './renderer/createDOMRenderer';
+export type { CreateDOMRendererOptions } from './renderer/createDOMRenderer';
 export { styleBucketOrdering } from './renderer/getStyleSheetForBucket';
 export { rehydrateRendererCache } from './renderer/rehydrateRendererCache';
 
@@ -54,8 +55,6 @@ export type {
   // Styles
   MakeStylesAnimation,
   MakeStylesStyle,
-  MakeStylesStyleRule,
-  MakeStylesStyleFunctionRule,
   // Internal types
   CSSClasses,
   CSSClassesMapBySlot,

@@ -34,6 +34,7 @@ import { classNamesFunction } from '@fluentui/utilities';
 import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
 import { colProperties } from '@fluentui/utilities';
+import { CommunicationColors } from '@fluentui/theme';
 import { compareDatePart } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
 import { compareDates } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
 import { ComponentsStyles } from '@fluentui/theme';
@@ -281,6 +282,7 @@ import { mergeStyleSets } from '@fluentui/style-utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { NeutralColors } from '@fluentui/theme';
 import { normalize } from '@fluentui/style-utilities';
 import { noWrap } from '@fluentui/style-utilities';
 import { nullRender } from '@fluentui/utilities';
@@ -342,12 +344,13 @@ import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
 import { shallowCompare } from '@fluentui/utilities';
+import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
 import { styled } from '@fluentui/utilities';
 import { StyleFunction } from '@fluentui/utilities';
 import { Stylesheet } from '@fluentui/style-utilities';
 import { tableProperties } from '@fluentui/utilities';
-import type { Target } from '@fluentui/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 import { tdProperties } from '@fluentui/utilities';
 import { textAreaProperties } from '@fluentui/utilities';
 import { Theme } from '@fluentui/theme';
@@ -1018,6 +1021,8 @@ export class CommandBarButton extends React_2.Component<IButtonProps, {}> {
 
 // @public (undocumented)
 export const CommandButton: typeof ActionButton;
+
+export { CommunicationColors }
 
 // @public (undocumented)
 export const CompactPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
@@ -1808,7 +1813,9 @@ export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean
 export { getStartDateOfWeek }
 
 // @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
+export function getSubmenuItems(item: IContextualMenuItem, options?: {
+    target?: Target;
+}): IContextualMenuItem[] | undefined;
 
 export { getTheme }
 
@@ -2451,6 +2458,7 @@ export interface IButtonGridProps extends React_2.TableHTMLAttributes<HTMLTableE
     // @deprecated
     containerClassName?: string;
     doNotContainWithinFocusZone?: boolean;
+    isSemanticRadio?: boolean;
     items: any[];
     onBlur?: () => void;
     onRenderItem: (item: any, index: number) => JSX.Element;
@@ -3381,6 +3389,7 @@ export interface IColorPickerGridCellProps {
     id?: string;
     idPrefix?: string;
     index?: number;
+    isRadio?: boolean;
     item: IColorCellProps;
     label?: string;
     onClick?: (item: IColorCellProps) => void;
@@ -3726,6 +3735,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     isButtonAriaHidden?: boolean;
     multiSelectDelimiter?: string;
     onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+    onInputValueChange?: (text: string) => void;
     onItemClick?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
@@ -3910,6 +3920,8 @@ export interface IContextualMenuItem {
     // @deprecated (undocumented)
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
+    // @deprecated (undocumented)
+    items?: IContextualMenuItem[];
     // (undocumented)
     itemType?: ContextualMenuItemType;
     key: string;
@@ -3921,6 +3933,7 @@ export interface IContextualMenuItem {
     onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React_2.ReactNode;
     onRenderContent?: (props: IContextualMenuItemProps, defaultRenders: IContextualMenuItemRenderFunctions) => React_2.ReactNode;
     onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
+    preferMenuTargetAsEventTarget?: boolean;
     primaryDisabled?: boolean;
     rel?: string;
     role?: string;
@@ -9664,6 +9677,8 @@ export class NavBase extends React_2.Component<INavProps, INavState> implements 
     get selectedKey(): string | undefined;
 }
 
+export { NeutralColors }
+
 export { normalize }
 
 // @public (undocumented)
@@ -10381,6 +10396,8 @@ export enum Shade {
 }
 
 export { shallowCompare }
+
+export { SharedColors }
 
 // @public (undocumented)
 export const Shimmer: React_2.FunctionComponent<IShimmerProps>;
