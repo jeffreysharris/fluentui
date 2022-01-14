@@ -37,7 +37,7 @@ import { SliderBasicExample } from '../components/slider.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
-    <Stack gap={8} horizontalAlign="center">
+    <Stack gap={8} horizontalAlign="center" id={'Common'}>
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
@@ -76,32 +76,32 @@ const Example = () => (
       <TooltipBasicExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'DetailsList'}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'Slider'}>
       <Label>Slider</Label>
       <SliderBasicExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'DatePicker'}>
       <Label className="section">DatePicker</Label>
       <DatePickerBoundedExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'TagPicker'}>
       <Label>Picker</Label>
       <TagPickerBasicExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'CommandBar'}>
       <Label>CommandBar</Label>
       <CommandBarBasicExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'Checkboxes'}>
       <Label>Checkboxes</Label>
       <Checkbox label="Unchecked checkbox (uncontrolled)" />
       <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked />
@@ -109,22 +109,22 @@ const Example = () => (
       <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'Links'}>
       <Label>Links</Label>
       <Link>Hello I am a link, hover underline</Link>
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'ComboBox'}>
       <Label>ComboBox</Label>
       <ComboBoxBasicExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'Dropdowns'}>
       <Label>Dropdowns</Label>
       <DropdownBasicExample />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'SearchBox'}>
       <Label>Search / input fields</Label>
       <SearchBox />
       <TextField disabled placeholder="disabled placeholder" />
@@ -133,7 +133,7 @@ const Example = () => (
       <TextField errorMessage="Error message!" />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'Misc'}>
       <Label>Misc</Label>
       <ActivityItemBasicExample />
       <ChoiceGroupBasicExample />
