@@ -34,14 +34,20 @@ import { SliderBasicExample } from '../components/slider.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
-    <Stack gap={8} horizontalAlign="center" id={'Common'}>
+    <Stack gap={8} padding={32} horizontalAlign="center">
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
+    </Stack>
+    <Stack gap={8} padding={64} horizontalAlign="center">
       <Label>TeachingBubble</Label>
       <TeachingBubbleBasicExample />
+    </Stack>
+    <Stack gap={8} padding={64} horizontalAlign="center">
       <Label>Pivots</Label>
       <PivotBasicExample />
+    </Stack>
+    <Stack gap={8} horizontalAlign="center">
       <Label>Buttons</Label>
       <DefaultButton text="DefaultButton" />
       <PrimaryButton text="PrimaryButton" />

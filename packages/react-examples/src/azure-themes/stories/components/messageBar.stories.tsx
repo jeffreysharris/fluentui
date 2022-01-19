@@ -151,8 +151,10 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
 
   const resetChoice = React.useCallback(() => setChoice(undefined), []);
 
+  React.useEffect(() => setChoice('all'), []);
+
   return (
-    <Stack {...horizontalStackProps}>
+    <Stack {...horizontalStackProps} id={'MessageBarBasicExample'}>
       <StackItem disableShrink>
         <ChoiceGroup
           styles={choiceGroupStyles}

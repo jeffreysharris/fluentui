@@ -8,22 +8,26 @@ const examplePrimaryButtonProps: IButtonProps = {
 };
 
 export const TeachingBubbleBasicExample: React.FunctionComponent = () => {
-  const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
+  const secondaryButton = React.useRef<HTMLElement>(null);
+  const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(true);
+
+  const [visible, setVisible] = React.useState<boolean>(true);
 
   const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
     () => ({
       children: 'Maybe later',
-      onClick: toggleTeachingBubbleVisible,
+      onClick: setVisible,
     }),
-    [toggleTeachingBubbleVisible],
+    [setVisible],
   );
 
   return (
     <div>
       <DefaultButton
         id="targetButton"
-        onClick={toggleTeachingBubbleVisible}
-        text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+        onClick={setVisible}
+        text={visible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+        elementRef={secondaryButton}
       />
 
       {teachingBubbleVisible && (
@@ -32,7 +36,7 @@ export const TeachingBubbleBasicExample: React.FunctionComponent = () => {
           hasCondensedHeadline={true}
           primaryButtonProps={examplePrimaryButtonProps}
           secondaryButtonProps={exampleSecondaryButtonProps}
-          onDismiss={toggleTeachingBubbleVisible}
+          onDismiss={setVisible}
           headline="Discover what’s trending around you"
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni
