@@ -32,8 +32,16 @@ export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = p
   return (
     <div>
       <Stack tokens={{ childrenGap: 8 }} horizontal>
-        <IconButton iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
         <IconButton
+          id="IconButton-1"
+          iconProps={emojiIcon}
+          title="Emoji"
+          ariaLabel="Emoji"
+          disabled={disabled}
+          checked={checked}
+        />
+        <IconButton
+          id="IconButton-2"
           menuProps={menuProps}
           iconProps={emojiIcon}
           title="Emoji"

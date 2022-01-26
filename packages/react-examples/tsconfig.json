@@ -21,7 +21,10 @@
     "types": ["jest", "webpack-env", "custom-global", "node"],
     "paths": {
       "@fluentui/react-examples/lib/*": ["./src/*"],
-      "@fluentui/react-examples": ["./src"]
+      "@fluentui/react-examples": ["./src"],
+      "@fluentui/react": ["../react/src"],
+      "@fluentui/react/lib/*": ["../react/src/*"],
+      "@fluentui/azure-themes": ["../azure-themes/src"]
     }
   },
   "include": ["src"]

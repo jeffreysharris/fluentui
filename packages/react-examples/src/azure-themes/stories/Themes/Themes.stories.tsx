@@ -39,33 +39,45 @@ const Example = () => (
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
     </Stack>
-    <Stack gap={8} padding={64} horizontalAlign="center">
+    <Stack
+      gap={8}
+      horizontalAlign="center"
+      style={{ width: '100%', paddingTop: '64px', paddingBottom: '88px' }}
+      id="TeachingBubble"
+    >
       <Label>TeachingBubble</Label>
       <TeachingBubbleBasicExample />
     </Stack>
-    <Stack gap={8} padding={64} horizontalAlign="center">
+    <Stack
+      gap={8}
+      padding={64}
+      horizontalAlign="center"
+      style={{ width: '100%', paddingTop: '64px', paddingBottom: '88px' }}
+      id="Pivots"
+    >
       <Label>Pivots</Label>
       <PivotBasicExample />
     </Stack>
     <Stack gap={8} horizontalAlign="center">
       <Label>Buttons</Label>
-      <DefaultButton text="DefaultButton" />
-      <PrimaryButton text="PrimaryButton" />
-      <CompoundButton primary text="CompoundButton" />
-      <CompoundButton secondaryText="secondary text." text="CompoundButton" />
-      <DefaultButton primary={true} text="Default button as primary" />
-      <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
+      <DefaultButton id="DefaultButton" text="DefaultButton" />
+      <PrimaryButton id="PrimaryButton" text="PrimaryButton" />
+      <CompoundButton id="CompoundButton-1" primary text="CompoundButton" />
+      <CompoundButton id="CompoundButton-2" secondaryText="secondary text." text="CompoundButton" />
+      <DefaultButton id="DefaultAsPrimary" primary={true} text="Default button as primary" />
+      <DefaultButton id="DefaultAsPrimaryDisabled" primary={true} disabled={true} text="Default w/ primary disabled" />
       <Label>Disabled Buttons</Label>
-      <DefaultButton disabled text="DefaultButton disabled" />
-      <PrimaryButton disabled text="PrimaryButton disabled" />
-      <PrimaryButton disabled text="PrimaryButton disabled" />
-      <CompoundButton disabled primary text="CompoundButton primary disabled" />
+      <DefaultButton id="DefaultDisabled" disabled text="DefaultButton disabled" />
+      <PrimaryButton id="PrimaryDisabled" disabled text="PrimaryButton disabled" />
+      <CompoundButton id="CompoundDisabled" disabled primary text="CompoundButton primary disabled" />
       <Label disabled>I am a disabled label</Label>
       <Label>Icon Buttons</Label>
       <ButtonIconExample checked={false} />
       <ButtonCommandBarExample />
       <ButtonIconWithTooltipExample />
-      <ButtonContextualMenuExample />
+      <Stack gap={8} padding={64} horizontalAlign="center" style={{ minHeight: '480px' }} id="ContextualMenu">
+        <ButtonContextualMenuExample />
+      </Stack>
       <ButtonActionExample />
 
       <Label>Toggle button</Label>

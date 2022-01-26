@@ -36,7 +36,14 @@ export const ButtonIconWithTooltipExample: React.FunctionComponent<IButtonExampl
         calloutProps={calloutProps}
         styles={hostStyles}
       >
-        <IconButton iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
+        <IconButton
+          id="IconButtonTooltip"
+          iconProps={emojiIcon}
+          title="Emoji"
+          ariaLabel="Emoji"
+          disabled={disabled}
+          checked={checked}
+        />
       </TooltipHost>
     </div>
   );

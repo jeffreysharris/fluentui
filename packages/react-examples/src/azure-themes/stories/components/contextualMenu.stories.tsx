@@ -10,11 +10,6 @@ export interface IButtonExampleProps {
 
 const menuProps: IContextualMenuProps = {
   // For example: disable dismiss if shift key is held down while dismissing
-  onDismiss: ev => {
-    if (ev && 'shiftKey' in ev) {
-      ev.preventDefault();
-    }
-  },
   items: [
     {
       key: 'emailMessage',
@@ -29,10 +24,15 @@ const menuProps: IContextualMenuProps = {
   ],
   directionalHintFixed: true,
 };
+
 const addIcon: IIconProps = { iconName: 'Add' };
 
-export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExampleProps> = props => {
+export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExampleProps> = (
+  props: IButtonExampleProps,
+) => {
   const { disabled, checked } = props;
+
+  let menuButton: React.RefObject<HTMLInputElement> | null;
 
   const buttonProps = {
     text: 'New item',
@@ -41,27 +41,74 @@ export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExample
     // Optional callback to customize menu rendering
     menuAs: _getMenu,
     // Optional callback to do other actions (besides opening the menu) on click
-    // onMenuClick={_onMenuClick}
+    onMenuClick: _onMenuClick,
     // By default, the ContextualMenu is re-created each time it's shown and destroyed when closed.
     // Uncomment the next line to hide the ContextualMenu but persist it in the DOM instead.
-    // persistMenu={true}
+    persistMenu: true,
     allowDisabledFocus: true,
     disabled: disabled,
     checked: checked,
   };
+
+  function _handleClick(): void {
+    if (menuButton && menuButton.current) {
+      menuButton.current?.click();
+    }
+  }
+
+  React.useEffect(() => {
+    _handleClick();
+  });
+
   return (
     <>
-      <DefaultButton {...buttonProps} />
+      <DefaultButton
+        id="ContextualMenuButton"
+        componentRef={(node: any) => {
+          console.log('attaching node as componentRef');
+          if (node?._buttonElement) {
+            menuButton = node._buttonElement;
+          }
+        }}
+        onClick={buttonProps.onMenuClick}
+        {...buttonProps}
+      />
       <PrimaryButton {...buttonProps} />
+      <ContextualMenu
+        id="ContextualMenu-1"
+        // onDismiss={(ev: any) => {
+        //   ev.preventDefault();
+        //   ev.stopPropagation();
+        //   _getMenu(menuProps)
+        // }}
+        target="#ContextualMenuButton"
+        {...menuProps}
+      />
     </>
   );
 };
 
-function _getMenu(props: IContextualMenuProps): JSX.Element {
-  // Customize contextual menu with menuAs
-  return <ContextualMenu {...props} />;
+function _menuOpened(_props: IContextualMenuProps): void {
+  console.log('_menuOpened');
 }
 
-// function _onMenuClick(ev?: React.SyntheticEvent<string>) {
-//   console.log(ev);
-// }
+function _getMenu(props: IContextualMenuProps): JSX.Element {
+  console.log('_getMenu');
+  // Customize contextual menu with menuAs
+  return (
+    <ContextualMenu
+      id="ContextualMenu-2"
+      onMenuOpened={_menuOpened}
+      onDismiss={(ev: any) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        _getMenu(menuProps);
+      }}
+      {...props}
+    />
+  );
+}
+
+function _onMenuClick(_ev?: React.SyntheticEvent<any>): void {
+  console.log('_onMenuClick');
+}

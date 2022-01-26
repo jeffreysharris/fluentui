@@ -34,6 +34,7 @@ export const ButtonCommandBarExample: React.FunctionComponent<IButtonExampleProp
   return (
     <Stack horizontal styles={stackStyles}>
       <CommandBarButton
+        id="CommandBarButton-1"
         iconProps={addIcon}
         text="New item"
         // Set split=true to render a SplitButton instead of a regular button with a menu
@@ -42,7 +43,13 @@ export const ButtonCommandBarExample: React.FunctionComponent<IButtonExampleProp
         disabled={disabled}
         checked={checked}
       />
-      <CommandBarButton iconProps={mailIcon} text="Send mail" disabled={disabled} checked={checked} />
+      <CommandBarButton
+        id="CommandBarButton-2"
+        iconProps={mailIcon}
+        text="Send mail"
+        disabled={disabled}
+        checked={checked}
+      />
     </Stack>
   );
 };
