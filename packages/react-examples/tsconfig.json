@@ -24,7 +24,8 @@
       "@fluentui/react-examples": ["./src"],
       "@fluentui/react": ["../react/src"],
       "@fluentui/react/lib/*": ["../react/src/*"],
-      "@fluentui/azure-themes": ["../azure-themes/src"]
+      "@fluentui/azure-themes": ["../azure-themes/src"],
+      "@fluentui/react-hooks": ["../react-hooks/src"]
     }
   },
   "include": ["src"]
