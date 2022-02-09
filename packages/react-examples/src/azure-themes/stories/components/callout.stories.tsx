@@ -80,7 +80,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     const { isCalloutVisible } = this.state;
 
     return (
-      <>
+      <div id="CalloutBasicExample">
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
           <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide Callout' : 'Show Callout'} />
         </div>
@@ -104,14 +104,14 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
               <p className={styles.subtext} id={this._descriptionId}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <Stack horizontal tokens={{ childrenGap: 5 }}>
+              <Stack horizontal gap={5}>
                 <PrimaryButton>Action</PrimaryButton>
                 <DefaultButton>Cancel</DefaultButton>
               </Stack>
             </div>
           </Callout>
         )}
-      </>
+      </div>
     );
   }
 

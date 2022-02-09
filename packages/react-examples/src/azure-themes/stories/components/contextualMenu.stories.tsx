@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   ContextualMenu,
   Customizer,
+  getId,
   IContextualMenuProps,
   IIconProps,
   ILayerProps,
@@ -16,18 +17,17 @@ export interface IButtonExampleProps {
   disabled?: boolean;
   checked?: boolean;
 }
+// const targetId :string = getId('ContextualMenuTarget');
+// const layerHostId :string = getId('ContextualMenuLayerHost');
 
 export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExampleProps> = (
   props: IButtonExampleProps,
 ) => {
   const { disabled, checked } = props;
 
-  let menuButton: React.RefObject<HTMLInputElement> | null;
-
-  const _calloutTarget = React.createRef<HTMLDivElement>();
-
-  const layerHostId = useId('contextualMenuLayerHost');
-
+  const secondaryTargetId: string = useId('ContextualMenuTarget');
+  const primaryTargetId: string = useId('ContextualMenuTarget');
+  const layerHostId: string = useId('ContextualMenuLayerHost');
   const layerProps: ILayerProps = { hostId: layerHostId };
 
   const menuProps: IContextualMenuProps = {
@@ -43,104 +43,78 @@ export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExample
         iconProps: { iconName: 'Calendar' },
       },
     ],
+    id: '#ContextualMenuMenu',
     directionalHintFixed: true,
-    id: 'ContextualMenuTest',
     alignTargetEdge: true,
     hidden: false,
-    target: _calloutTarget,
+    shouldFocusOnMount: true,
+    doNotLayer: true,
+    //Custom settings for the parent Callout layer to ensure the contextual menu is displayed for snapshotting
     calloutProps: {
+      hidden: false,
       preventDismissOnEvent: () => true,
+      styles: {
+        root: {
+          opacity: '1 !important',
+          filter: 'opacity(1) !important',
+        },
+      },
     },
   };
 
   const addIcon: IIconProps = { iconName: 'Add' };
 
   const styles = mergeStyleSets({
-    layerHost: {
-      position: 'relative',
-      height: 400,
-      width: 1000,
-      // overflow: 'hidden',
-      border: '1px solid #ccc',
+    contextualMenuExampleArea: {
+      display: 'block',
+      height: 120,
+      width: '100%',
     },
-    contextualMenu: {
-      opacity: 1,
-      filter: 'opacity(1)',
+    targetClass: {
+      display: 'inline-block',
+      height: 32,
+      minWidth: 130,
+      width: '100%',
+    },
+    layerHost: {
+      display: 'inline-block',
+      height: '100%',
+      width: '100%',
     },
   });
 
   const buttonProps = {
     text: 'New item',
     iconProps: addIcon,
-    menuProps: menuProps,
+    // menuProps: menuProps,
     // Optional callback to customize menu rendering
     // menuAs: _getMenu,
     // Optional callback to do other actions (besides opening the menu) on click
     // By default, the ContextualMenu is re-created each time it's shown and destroyed when closed.
     // Uncomment the next line to hide the ContextualMenu but persist it in the DOM instead.
-    persistMenu: true,
+    // persistMenu: true,
     allowDisabledFocus: true,
     disabled: disabled,
     checked: checked,
   };
 
-  function _handleClick(): void {
-    if (menuButton && menuButton.current) {
-      menuButton.current?.click();
-    }
-  }
-
-  React.useEffect(() => {
-    _handleClick();
-  });
-
   return (
-    // <div id="ContextualMenuExample">
-    //   <DefaultButton
-    //     id="ContextualMenuButton"
-    //     componentRef={(node: any) => {
-    //       console.log('attaching node as componentRef');
-    //       if (node?._buttonElement) {
-    //         menuButton = node._buttonElement;
-    //       }
-    //     }}
-    //     onClick={buttonProps.onMenuClick}
-    //     {...buttonProps}
-    //   />
-    //   <PrimaryButton {...buttonProps} />
-    //   <ContextualMenu
-    //     id="ContextualMenu-1"
-    //     onDismiss={(ev: any) => {
-    //       ev.preventDefault();
-    //       ev.stopPropagation();
-    //       _getMenu(menuProps);
-    //     }}
-    //     target="#ContextualMenu"
-    //     {...menuProps}
-    //   />
-    // </div>
     <div>
-      <Customizer scopedSettings={{ Layer: { ...layerProps } }}>
-        <LayerHost id={layerHostId} className={styles.layerHost}>
-          <ContextualMenu {...menuProps} id="ContextualMenuExample" />
-          <div className="targetClass" ref={_calloutTarget} />
-        </LayerHost>
+      <Customizer scopedSettings={{ Layer: layerProps }}>
+        <div className={styles.contextualMenuExampleArea}>
+          <div className={styles.targetClass} id={secondaryTargetId}>
+            <DefaultButton {...buttonProps} />
+          </div>
+          <ContextualMenu {...menuProps} target={`#${secondaryTargetId}`} />
+        </div>
+        <div className={styles.contextualMenuExampleArea}>
+          <div className={styles.targetClass} id={primaryTargetId}>
+            <PrimaryButton {...buttonProps} />
+          </div>
+          <ContextualMenu {...menuProps} target={`#${primaryTargetId}`} />
+        </div>
       </Customizer>
+      <LayerHost id={layerHostId} className={styles.layerHost} />
     </div>
   );
 };
-
-function _getMenu(props: IContextualMenuProps): JSX.Element {
-  // Customize contextual menu with menuAs
-  return (
-    <ContextualMenu
-      id="ContextualMenu-"
-      onDismiss={(ev: any) => {
-        ev.preventDefault();
-        ev.stopPropagation();
-        _getMenu(props);
-      }}
-      {...props}
-    />
-  );
-}

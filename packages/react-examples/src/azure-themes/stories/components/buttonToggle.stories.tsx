@@ -18,6 +18,7 @@ export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> =
 
   return (
     <DefaultButton
+      id="ButtonToggleExample"
       toggle
       checked={muted || checked}
       text={muted ? 'Volume muted' : 'Volume unmuted'}

@@ -29,7 +29,7 @@ export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = 
   const { disabled, checked } = props;
 
   return (
-    <Stack tokens={{ childrenGap: 8 }} horizontalAlign="center">
+    <Stack tokens={{ childrenGap: 8 }} horizontalAlign="center" id="SplitButtonExamples">
       <DefaultButton
         text="Standard split"
         split

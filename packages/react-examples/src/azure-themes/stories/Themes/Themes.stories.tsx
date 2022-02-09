@@ -1,3 +1,4 @@
+/* eslint-disable @fluentui/max-len */
 import * as React from 'react';
 import { TextField, Stack, Checkbox, SearchBox, Link, Label, Text, ThemeProvider } from '@fluentui/react';
 import {
@@ -32,8 +33,11 @@ import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 import { SliderBasicExample } from '../components/slider.stories';
 
-const Example = () => (
+const Example = (): JSX.Element => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
+    <Stack gap={8} padding={64} horizontalAlign="center" style={{ minHeight: '200px' }} id="ContextualMenuExample">
+      <ButtonContextualMenuExample />
+    </Stack>
     <Stack gap={8} padding={32} horizontalAlign="center">
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
@@ -75,9 +79,6 @@ const Example = () => (
       <ButtonIconExample checked={false} />
       <ButtonCommandBarExample />
       <ButtonIconWithTooltipExample />
-      <Stack gap={8} padding={64} horizontalAlign="center" style={{ minHeight: '480px' }} id="ContextualMenu">
-        <ButtonContextualMenuExample />
-      </Stack>
       <ButtonActionExample />
 
       <Label>Toggle button</Label>
