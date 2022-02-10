@@ -80,14 +80,31 @@ const Example = (): JSX.Element => (
       <ButtonCommandBarExample />
       <ButtonIconWithTooltipExample />
       <ButtonActionExample />
-
       <Label>Toggle button</Label>
       <ButtonToggleExample />
       <ButtonSplitExample checked={false} />
-      <CalloutBasicExample />
-      <DefaultButton text="WIP: default button > primary" primary />
-      <DefaultButton text="WIP: Primary button" primary />
+      <Stack
+        gap={8}
+        horizontalAlign="start"
+        verticalAlign="start"
+        style={{
+          paddingTop: '88px',
+          marginTop: '24px',
+          paddingBottom: '88px',
+          marginBottom: '24px',
+          minHeight: '320px',
+          minWidth: '480px',
+        }}
+        id="Callout"
+      >
+        <CalloutBasicExample />
+      </Stack>
 
+      {/* PROGRESS MARKER */}
+      <Stack gap={8} horizontalAlign="center">
+        <DefaultButton text="WIP: default button > primary" primary />
+        <DefaultButton text="WIP: Primary button" primary />
+      </Stack>
       <Label>Tooltip</Label>
       <TooltipBasicExample />
     </Stack>
@@ -149,13 +166,13 @@ const Example = (): JSX.Element => (
       <TextField errorMessage="Error message!" />
     </Stack>
 
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }} id={'Misc'}>
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>Misc</Label>
-      <ActivityItemBasicExample />
-      <ChoiceGroupBasicExample />
-      <ToggleBasicExample />
-      <ColorPickerBasicExample />
-      <ContextualMenuDefaultExample />
+      <ActivityItemBasicExample id="ActivityItems" />
+      <ChoiceGroupBasicExample id="ChoiceGroup" />
+      <ToggleBasicExample id="ToggleExample" />
+      <ColorPickerBasicExample id="ColorPicker" />
+      <ContextualMenuDefaultExample id="ContextualMenuDefault" />
     </Stack>
   </Stack>
 );

@@ -1,3 +1,4 @@
+/* eslint-disable @fluentui/max-len */
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 
@@ -8,8 +9,22 @@ const options: IChoiceGroupOption[] = [
   { key: 'D', text: 'Option D' },
 ];
 
-export const ChoiceGroupBasicExample: React.FunctionComponent = () => {
-  return <ChoiceGroup defaultSelectedKey="B" options={options} onChange={_onChange} label="Pick one" required={true} />;
+export interface IChoiceGroupBasicExampleProps {
+  id?: string;
+}
+
+export const ChoiceGroupBasicExample: React.FunctionComponent<IChoiceGroupBasicExampleProps> = props => {
+  const id = props.id;
+  return (
+    <ChoiceGroup
+      id={id}
+      defaultSelectedKey="B"
+      options={options}
+      onChange={_onChange}
+      label="Pick one"
+      required={true}
+    />
+  );
 };
 
 function _onChange(ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void {

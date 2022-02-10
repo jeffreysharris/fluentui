@@ -6,6 +6,7 @@ import {
   IColor,
   IColorPickerStyles,
   updateA,
+  getPropsWithDefaults,
 } from '@fluentui/react/lib/index';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
@@ -23,13 +24,20 @@ const colorPickerStyles: Partial<IColorPickerStyles> = {
   colorRectangle: { height: 268 },
 };
 
+export interface IBasicColorPickerExampleProps {
+  id?: string;
+}
+
 export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
   showPreview: boolean;
 }
 
-export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
+export class ColorPickerBasicExample extends React.Component<
+  IBasicColorPickerExampleProps,
+  IBasicColorPickerExampleState
+> {
   public state: IBasicColorPickerExampleState = {
     color: getColorFromString('#ffffff')!,
     alphaSliderHidden: false,
@@ -39,7 +47,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
   public render(): JSX.Element {
     const { color, alphaSliderHidden, showPreview: showPreview } = this.state;
     return (
-      <div className={classNames.wrapper}>
+      <div id={this.props.id} className={classNames.wrapper}>
         <ColorPicker
           color={color}
           onChange={this._updateColor}

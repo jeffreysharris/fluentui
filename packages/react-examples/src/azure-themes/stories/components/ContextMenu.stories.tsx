@@ -2,8 +2,17 @@ import * as React from 'react';
 import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
-export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
-  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
+export interface IContextualMenuExampleProps {
+  id?: string;
+}
+
+export const ContextualMenuDefaultExample: React.FunctionComponent<IContextualMenuExampleProps> = props => {
+  const id = props.id;
+  return (
+    <div id={id}>
+      <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
+    </div>
+  );
 };
 
 const menuItems: IContextualMenuItem[] = [

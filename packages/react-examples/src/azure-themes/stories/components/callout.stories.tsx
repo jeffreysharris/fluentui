@@ -67,7 +67,7 @@ const styles = mergeStyleSets({
 // Example code
 export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
   public state: ICalloutBasicExampleState = {
-    isCalloutVisible: false,
+    isCalloutVisible: true,
   };
 
   private _menuButtonElement = React.createRef<HTMLDivElement>();
@@ -80,7 +80,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     const { isCalloutVisible } = this.state;
 
     return (
-      <div id="CalloutBasicExample">
+      <div>
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
           <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide Callout' : 'Show Callout'} />
         </div>
@@ -117,13 +117,13 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
 
   private _onShowMenuClicked = (): void => {
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible,
+      isCalloutVisible: true,
     });
   };
 
   private _onCalloutDismiss = (): void => {
     this.setState({
-      isCalloutVisible: false,
+      isCalloutVisible: true,
     });
   };
 }

@@ -10,7 +10,12 @@ const classNames = mergeStyleSets({
   },
 });
 
-export const ActivityItemBasicExample: React.FunctionComponent = () => {
+export interface IActivityItemBasicExample {
+  id?: string;
+}
+
+export const ActivityItemBasicExample: React.FunctionComponent<IActivityItemBasicExample> = props => {
+  const id = props.id;
   const activityItemExamples = [
     {
       key: 1,
@@ -101,7 +106,7 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
   ];
 
   return (
-    <div>
+    <div id={id}>
       {activityItemExamples.map((item: { key: string | number }) => (
         <ActivityItem {...item} key={item.key} className={classNames.exampleRoot} />
       ))}

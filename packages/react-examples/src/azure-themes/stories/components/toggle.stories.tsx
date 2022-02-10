@@ -4,9 +4,14 @@ import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
-export const ToggleBasicExample: React.FunctionComponent = () => {
+export interface IToggleBasicExampleProps {
+  id?: string;
+}
+
+export const ToggleBasicExample: React.FunctionComponent<IToggleBasicExampleProps> = props => {
+  const id = props.id;
   return (
-    <Stack tokens={stackTokens}>
+    <Stack {...stackTokens} id={id}>
       <Toggle label="Enabled and checked" defaultChecked onText="On" offText="Off" onChange={_onChange} />
 
       <Toggle label="Enabled and unchecked" onText="On" offText="Off" onChange={_onChange} />
